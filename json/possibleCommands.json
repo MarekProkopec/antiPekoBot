@@ -1,0 +1,29 @@
+ [{
+         "name": "help",
+         "value": "Get list of all commands"
+     },
+     {
+         "name": "addAdmin",
+         "value": "Adds new admin (needs admin permissions)"
+     },
+     {
+         "name": "addword {word}",
+         "value": "Adds new banned word"
+     },
+     {
+         "name": "removeword {word}",
+         "value": "Removes banned word"
+     },
+     {
+         "name": "wordlist",
+         "value": "Lists all banned words"
+     },
+     {
+         "name": "addAdmin",
+         "value": "Adds new admin (needs admin permissions)"
+     },
+     {
+         "name": "addAdmin",
+         "value": "Adds new admin (needs admin permissions)"
+     }
+ ]
