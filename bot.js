@@ -107,6 +107,8 @@ function removeForbiddenWord(word) {
   fs.writeFileSync("./json/bannedWords.json", JSON.stringify(bannedWords));
 }
 
+
+
 client.on("messageCreate", async (msg) => {
   if (msg.author.bot) return;
 
