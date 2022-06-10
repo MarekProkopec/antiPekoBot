@@ -3,6 +3,7 @@ const fetch = (...args) =>
 
 const fs = require("fs");
 const Discord = require("discord.js");
+const replaceSpecialCharacters = require("replace-special-characters");
 
 const prefix = "antipeko ";
 
@@ -14,6 +15,7 @@ const possibleCommands = require("./json/possibleCommands.json");
 
 let bannedWords = require("./json/bannedWords.json");
 const adminList = require("./json/adminList.json");
+const customDictonary = require("./json/customDictionary.json");
 
 const client = new Discord.Client({
   intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS"],
@@ -78,8 +80,15 @@ client.on("ready", () => {
 });
 
 function checkForbiddenWord(msg) {
+  msg = msg.content.replaceAll(" ", "");
+  for(let letter of Object.keys(customDictonary)){
+    msg = msg.replaceAll(letter, customDictonary[letter])
+  }
   for (let word of bannedWords) {
-    if (msg.content.toLowerCase().trim().endsWith(word)) return true;
+    if (
+      replaceSpecialCharacters(msg).toLowerCase().trim().endsWith(word)
+    )
+      return true;
   }
   return false;
 }
@@ -100,6 +109,7 @@ function removeForbiddenWord(word) {
 
 client.on("messageCreate", async (msg) => {
   if (msg.author.bot) return;
+
   bannedUsers.updateBanned();
   bannedUsers.handleUserBan(msg);
 
@@ -163,7 +173,7 @@ client.on("messageCreate", async (msg) => {
     return;
   }
 
-  if (checkForbiddenWord(msg)) {
+  if (checkForbiddenWord(msg) && !isAdmin(msg.author)) {
     console.log(
       `Deleted message:\n${msg.content}\nfrom user: ${msg.author.username}`
     );

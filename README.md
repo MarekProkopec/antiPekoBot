@@ -6,3 +6,9 @@
   - {
       "token": "YOUR TOKEN"
     }
+
+
+## TODO:
+
+[ ] Able to add admin
+[ ] More complex recognition system

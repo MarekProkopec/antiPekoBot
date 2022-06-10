@@ -17,13 +17,5 @@
      {
          "name": "wordlist",
          "value": "Lists all banned words"
-     },
-     {
-         "name": "addAdmin",
-         "value": "Adds new admin (needs admin permissions)"
-     },
-     {
-         "name": "addAdmin",
-         "value": "Adds new admin (needs admin permissions)"
      }
  ]
